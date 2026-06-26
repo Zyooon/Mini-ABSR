@@ -38,3 +38,7 @@ htmlcov/
 
 # claude
 .claude/*
+
+# Database
+*.db
+data/*
