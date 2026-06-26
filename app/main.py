@@ -6,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 
 from app.config import settings
 from app.database import Base, engine
+import app.models  # noqa: F401 — Base.metadata에 모든 테이블 등록
 
 logging.basicConfig(
     level=logging.DEBUG if settings.debug else logging.INFO,
