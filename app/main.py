@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+from app.api.log_api import router as log_router
 from app.config import settings
 from app.database import Base, engine
 import app.models  # noqa: F401 — Base.metadata에 모든 테이블 등록
@@ -26,6 +27,9 @@ app = FastAPI(
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 templates = Jinja2Templates(directory="app/templates")
+
+
+app.include_router(log_router)
 
 
 @app.get("/health")
